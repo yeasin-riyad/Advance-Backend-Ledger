@@ -1,4 +1,5 @@
 const accountModel = require("../models/account.model");
+const userModel = require("../models/user.model");
 
 
 async function createAccountController(req, res) {
@@ -8,6 +9,11 @@ async function createAccountController(req, res) {
     const account = await accountModel.create({
         user: user._id
     })
+    if(account) {
+        await userModel.findByIdAndUpdate(user, {
+            systemUser:true
+        })
+    }
 
     res.status(201).json({
         account
