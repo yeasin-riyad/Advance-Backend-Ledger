@@ -140,7 +140,7 @@ project-root/
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/banking-backend.git
+https://github.com/yeasin-riyad/Advance-Backend-Ledger.git
 
 # Install dependencies
 npm install
