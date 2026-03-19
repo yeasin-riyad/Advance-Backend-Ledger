@@ -1,7 +1,7 @@
 const userModel = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const emailService = require("../services/email.service")
-// const tokenBlackListModel = require("../models/blackList.model")
+const tokenBlackListModel = require("../models/blackList.model")
 
 /**
 * - user register controller
@@ -96,9 +96,9 @@ async function userLogoutController(req, res) {
 
 
 
-    // await tokenBlackListModel.create({
-    //     token: token
-    // })
+    await tokenBlackListModel.create({
+        token: token
+    })
 
     res.clearCookie("token")
 

@@ -25,7 +25,11 @@ async function authMiddleware(req, res, next) {
     try {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
-
+        if (!decoded || !decoded.userId) {
+            return res.status(401).json({
+                message: "Unauthorized access, token is invalid"
+            })
+        }   
         const user = await userModel.findById(decoded.userId)
 
         req.user = user
