@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
+const connectDB=require('./config/db');
+
 
 const app = express();
 app.use(express.json())
@@ -28,7 +30,7 @@ app.use(
  */
 const authRouter = require("./routes/auth.routes");
 const accountRouter = require("./routes/account.routes");
-const transactionRoutes = require("./routes/transaction.routes")
+const transactionRoutes = require("./routes/transaction.routes");
 
 
 
