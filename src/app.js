@@ -4,19 +4,14 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 const connectDB=require('./config/db');
 
+connectDB();
+
 
 const app = express();
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(async (req, res, next) => {
-    try {
-        await connectDB();
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
+
 
 // Swagger Documentation
 app.use(
